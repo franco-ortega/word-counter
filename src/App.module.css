@@ -8,6 +8,7 @@
 
 .App form {
   width: fit-content;
+  max-width: 90%;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
@@ -16,8 +17,10 @@
 }
 
 .App textarea {
-  height: 100px;
-  width: 500px;
+  height: 10rem;
+  width: 20rem;
+  max-width: 100%;
+
   padding: 0.25rem;
 }
 
@@ -28,13 +31,6 @@
 
   color: white;
   font-size: 1rem;
-}
-
-.App ul {
-  /* margin-block: 1rem; */
-  /* background-color: lightgreen; */
-  /* border: 1px solid black; */
-  /* padding: 1rem; */
 }
 
 .App li {
