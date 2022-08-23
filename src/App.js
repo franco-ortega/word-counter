@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { countWords } from './utils/countWords';
 import styles from './App.module.css';
+import { cleanUpStory } from './utils/cleanUpStory';
+import { sortWords } from './utils/sortWords';
 
 const App = () => {
   const [story, setStory] = useState('');
@@ -10,21 +12,11 @@ const App = () => {
   const onStorySubmit = (e) => {
     e.preventDefault();
 
-    const allWords = story
-      .replace(/\n/g, ' ')
-      .replace(/([^A-Za-z0-9 ])/g, '')
-      .split(' ');
-
-    const wordCount = countWords(allWords);
-
-    setWordCount(wordCount);
-
-    const wordlist = Object.keys(wordCount);
-
-    const sortedWords = wordlist.sort((a, b) => {
-      return wordCount[b] - wordCount[a];
-    });
-
+    const allWords = cleanUpStory(story);
+    const countedWords = countWords(allWords);
+    const wordList = Object.keys(countedWords);
+    const sortedWords = sortWords(wordList, countedWords);
+    setWordCount(countedWords);
     setSortedWords(sortedWords);
   };
 
@@ -41,14 +33,15 @@ const App = () => {
         </label>
         <button>Submit</button>
       </form>
+      <p>Different words: {sortedWords.length}</p>
       <ul>
         {sortedWords.map((word, i) => (
           <li key={i}>
             <p>
-              {i + 1 < 10 ? `0${i + 1}` : `${i + 1}`}. {word}:
+              {i + 1 < 10 ? `0${i + 1}` : `${i + 1}`}. {word}
             </p>
 
-            <p>{wordCount[word]}</p>
+            <p>x{wordCount[word]}</p>
           </li>
         ))}
       </ul>
