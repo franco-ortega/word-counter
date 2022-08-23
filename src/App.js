@@ -14,7 +14,6 @@ const App = () => {
     e.preventDefault();
 
     const allWords = cleanUpStory(story);
-    console.log(allWords);
     const countedWords = countWords(allWords);
     const wordList = Object.keys(countedWords);
     const sortedWords = sortWords(wordList, countedWords);
@@ -40,19 +39,19 @@ const App = () => {
         <>
           <p>Total words: {totalWords}</p>
           <p>Different words: {sortedWords.length}</p>
+          <ul>
+            {sortedWords.map((word, i) => (
+              <li key={i}>
+                <p>
+                  {i + 1 < 10 ? `0${i + 1}` : `${i + 1}`}. {word}
+                </p>
+
+                <p>x{wordCount[word]}</p>
+              </li>
+            ))}
+          </ul>
         </>
       ) : null}
-      <ul>
-        {sortedWords.map((word, i) => (
-          <li key={i}>
-            <p>
-              {i + 1 < 10 ? `0${i + 1}` : `${i + 1}`}. {word}
-            </p>
-
-            <p>x{wordCount[word]}</p>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 };
