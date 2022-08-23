@@ -10,25 +10,22 @@ const App = () => {
   const onStorySubmit = (e) => {
     e.preventDefault();
 
-    const cleanString = story
+    const allWords = story
       .replace(/\n/g, ' ')
-      .replace(/([^A-Za-z0-9 ])/g, '');
-    console.log(cleanString);
+      .replace(/([^A-Za-z0-9 ])/g, '')
+      .split(' ');
 
-    const splitStory = cleanString.split(' ');
-
-    const wordCount = countWords(splitStory);
+    const wordCount = countWords(allWords);
 
     setWordCount(wordCount);
 
-    const words = Object.keys(wordCount);
+    const wordlist = Object.keys(wordCount);
 
-    const sortedWords = words.sort((a, b) => {
+    const sortedWords = wordlist.sort((a, b) => {
       return wordCount[b] - wordCount[a];
     });
-    setSortedWords(sortedWords);
 
-    console.log(sortedWords);
+    setSortedWords(sortedWords);
   };
 
   return (
@@ -36,7 +33,11 @@ const App = () => {
       <h1>Word Counter</h1>
       <form onSubmit={onStorySubmit}>
         <label htmlFor='story'>
-          <textarea id='story' onChange={(e) => setStory(e.target.value)} />
+          <textarea
+            id='story'
+            name='story'
+            onChange={(e) => setStory(e.target.value)}
+          />
         </label>
         <button>Submit</button>
       </form>

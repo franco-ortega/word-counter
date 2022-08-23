@@ -10,7 +10,7 @@
 }
 
 .App ul {
-  margin: 2rem;
+  margin-block: 1rem;
 }
 
 .App li {
