@@ -8,14 +8,17 @@ const App = () => {
   const [story, setStory] = useState('');
   const [wordCount, setWordCount] = useState(null);
   const [sortedWords, setSortedWords] = useState([]);
+  const [totalWords, setTotalWords] = useState(0);
 
   const onStorySubmit = (e) => {
     e.preventDefault();
 
     const allWords = cleanUpStory(story);
+    console.log(allWords);
     const countedWords = countWords(allWords);
     const wordList = Object.keys(countedWords);
     const sortedWords = sortWords(wordList, countedWords);
+    setTotalWords(allWords.length);
     setWordCount(countedWords);
     setSortedWords(sortedWords);
   };
@@ -33,7 +36,12 @@ const App = () => {
         </label>
         <button>Submit</button>
       </form>
-      <p>Different words: {sortedWords.length}</p>
+      {sortedWords.length ? (
+        <>
+          <p>Total words: {totalWords}</p>
+          <p>Different words: {sortedWords.length}</p>
+        </>
+      ) : null}
       <ul>
         {sortedWords.map((word, i) => (
           <li key={i}>
