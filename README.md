@@ -1,4 +1,4 @@
 ...
-The cat likes pizza the dog likes poop the bird loves salt the fish likes bugs the hamster loves running
+The cat likes pizza. The dog prefers peppers. The bird loves salt. The fish likes bugs. The hamster loves running. The snake slithers the best.
 
 ([^a-za-z0-9])
