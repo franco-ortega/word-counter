@@ -42,7 +42,7 @@ const App = () => {
         </label>
         <div>
           <button>Submit</button>
-          <button onClick={onResetClick}>Reset</button>
+          <button onClick={onResetClick}>Erase</button>
         </div>
       </form>
       {sortedWords.length ? (
