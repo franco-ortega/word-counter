@@ -22,6 +22,12 @@ const App = () => {
     setSortedWords(sortedWords);
   };
 
+  const onResetClick = () => {
+    // eslint-disable-next-line no-restricted-globals
+    const result = confirm('Do you want to erase the text?');
+    if (result) setStory('');
+  };
+
   return (
     <div className={styles.App}>
       <h1>Word Counter</h1>
@@ -31,9 +37,13 @@ const App = () => {
             id='story'
             name='story'
             onChange={(e) => setStory(e.target.value)}
+            value={story}
           />
         </label>
-        <button>Submit</button>
+        <div>
+          <button>Submit</button>
+          <button onClick={onResetClick}>Erase</button>
+        </div>
       </form>
       {sortedWords.length ? (
         <>

@@ -30,6 +30,13 @@
 
   color: hsl(0, 0%, 100%);
   font-size: 1rem;
+
+  min-width: 5rem;
+}
+
+.App button + button {
+  background-color: hsl(0, 100%, 45%);
+  margin-left: 1rem;
 }
 
 .App ul {
