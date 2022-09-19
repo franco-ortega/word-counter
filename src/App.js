@@ -22,6 +22,10 @@ const App = () => {
     setSortedWords(sortedWords);
   };
 
+  const onResetClick = () => {
+    setStory('');
+  };
+
   return (
     <div className={styles.App}>
       <h1>Word Counter</h1>
@@ -31,9 +35,11 @@ const App = () => {
             id='story'
             name='story'
             onChange={(e) => setStory(e.target.value)}
+            value={story}
           />
         </label>
         <button>Submit</button>
+        <button onClick={onResetClick}>Reset</button>
       </form>
       {sortedWords.length ? (
         <>
