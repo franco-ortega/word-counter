@@ -23,7 +23,9 @@ const App = () => {
   };
 
   const onResetClick = () => {
-    setStory('');
+    // eslint-disable-next-line no-restricted-globals
+    const result = confirm('Do you want to erase the text?');
+    if (result) setStory('');
   };
 
   return (
