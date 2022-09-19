@@ -38,8 +38,10 @@ const App = () => {
             value={story}
           />
         </label>
-        <button>Submit</button>
-        <button onClick={onResetClick}>Reset</button>
+        <div>
+          <button>Submit</button>
+          <button onClick={onResetClick}>Reset</button>
+        </div>
       </form>
       {sortedWords.length ? (
         <>
